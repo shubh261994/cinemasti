@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  {% for object in object_list %}
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail list_thumbnail">
+      <img src='{{object.poster.url}}' class='img-responsive img-list' alt="...">
+      <div class="caption list_text">
+        <h4><a href="{{ object.get_absolute_url }}">{{object.name}} </a></h4>
+        <p>{{object.outline|truncatechars:100}}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+		
+{% endblock content %}

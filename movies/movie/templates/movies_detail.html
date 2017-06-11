@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block head_title %} {{ instance.title }} | {{ block.super }} {% endblock head_title %}
+<body>
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="thumbnail">
+    	<div class="row">
+    		<div class="col-sm-4">
+				{% if instance.poster %}
+	 			<img src='{{instance.poster.url}}' class='img-responsive' />
+				{% endif %}
+			</div>
+			<div class="col-sm-7">
+				<h2>{{ instance.name }}{% if instance.tagline%}- {{ instance.tagline }} {% endif %}</h2>
+				<br>
+				<h4>Outline</h4>
+				<hr>
+				<p> {{instance.outline}} </p>
+				<br>
+				<h4>Movie Info</h4>
+				<hr>
+				
+				<table style="width:100%">
+  				<tr>
+    			<th>Genre:</th>
+    			<td>{{instance.genre | capfirst}}</td>
+  				</tr>
+  				
+  				<tr>
+    			<th>Directed By:</th>
+    			<td>{{instance.director}}</td>
+  				</tr>
+  				
+  				<tr>
+    			<th>Written By:</th>
+    			<td>{{instance.writer}}</td>
+  				</tr>
+  				
+  				<tr>
+    			<th>Actors:</th>
+    			<td>{{instance.actors}}</td>
+  				</tr>
+  				
+  				<tr>
+    			<th>In Theathers:</th>
+    			<td>{{instance.release_date}}</td>
+  				</tr>
+  				
+				</table>
+				<br>	
+			</div>
+  		</div>
+	</div>
+  </div>
+</div>
+
+{% if instance.trailer %}
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="thumbnail">
+    <h3>Trailer:</h3>
+    <br>
+	<div class="bs-example" data-example-id="responsive-embed-16by9-iframe-youtube"> 
+	<div class="embed-responsive embed-responsive-16by9"> 
+	<iframe class="embed-responsive-item" src="{{instance.trailer}}" allowfullscreen=""></iframe> 
+	</div> 
+	</div>
+	</div>
+</div>
+</div>
+{% endif %}
+
+
+
+
+</div>
+</div>
+</div>
+{% endblock content %}
+
+	 
+</body>
+</html>
